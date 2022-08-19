@@ -7,14 +7,25 @@ NB_POINTS = 0
 
 
 def ask_question():
-
     a = random.randint(MIN_NUMBER, MAX_NUMBER)
     b = random.randint(MIN_NUMBER, MAX_NUMBER)
+    o = random.randint(0, 2)
+    operateur_str = "+"
+    if o == 1:
+        operateur_str = "-"
+    elif o == 2:
+        operateur_str = "*"
 
-    answer_str = input(f"Quel est la réponse de {a} + {b} ?")
+    answer_str = input(f"Quel est la réponse de {a} {operateur_str} {b} ?")
     answer_int = int(answer_str)
 
-    if answer_int == a+b:
+    calcul = a+b
+    if o ==1:
+        calcul = a-b
+    elif o ==2:
+        calcul = a*b
+
+    if answer_int == calcul:
         return True
     return False
 
